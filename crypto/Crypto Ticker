@@ -1,0 +1,45 @@
+Cypto ticker
+
+a: Ask array, containing information about the lowest ask price.
+
+	"85.50000": The lowest ask price.
+	"11": The number of asks at the lowest ask price.
+	"11.000": The volume at the lowest ask price.
+
+b: Bid array, containing information about the highest bid price.
+
+	"85.44000": The highest bid price.
+	"117": The number of bids at the highest bid price.
+	"117.000": The volume at the highest bid price.
+
+c: Close array, containing information about the most recent trade.
+
+	"85.49000": The price at which the most recent trade occurred.
+	"8.84978311": The volume of the most recent trade.
+
+v: Volume array, containing information about the last 24 hours of trading volume.
+
+	"27017.92698926": The volume in the last 24 hours in the base currency (SOL).
+	"64492.52549134": The volume in the last 24 hours in the quote currency (EUR).
+
+p: Price array, containing information about the last 24 hours of trading weighted average price.
+
+	"84.98448": The weighted average price in the last 24 hours in the base currency (SOL).
+	"85.23245": The weighted average price in the last 24 hours in the quote currency (EUR).
+
+t: Trade array, containing information about the number of trades in the last 24 hours.
+
+	1449: The number of trades in the last 24 hours.
+	3661: The cumulative number of trades.
+
+l: Low array, containing information about the lowest trade price in the last 24 hours.
+
+	"83.62000": The lowest trade price in the last 24 hours.
+
+h: High array, containing information about the highest trade price in the last 24 hours.
+
+	"86.38000": The highest trade price in the last 24 hours.
+
+o: Open price, representing the price at which the first trade occurred in the last 24 hours.
+
+	"85.01000": The open price.
