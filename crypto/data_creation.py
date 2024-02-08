@@ -30,9 +30,9 @@ class dataCreation:
     def collect_process_data(self):
         # Convert dictionaries to DataFrames
         sell_data = self.retrieve_data('asks')
-        final_sell_data = self.process_trade_data(sell_data, 'sell')
+        final_sell_data = self.process_trade_data_2(sell_data, 'sell')
         buy_data = self.retrieve_data('bids')
-        final_buy_data = self.process_trade_data(buy_data, 'buy')
+        final_buy_data = self.process_trade_data_2(buy_data, 'buy')
 
         lowest_sell_data = self.retrieve_data('ticker')['a']
         final_lowest_sell_data = self.process_ticker_data(lowest_sell_data, 'sell')
@@ -41,12 +41,13 @@ class dataCreation:
 
         current_price = self.retrieve_data('last price')
 
-        prices = self.get_and_store_latest_price(1, 5)
+        prices = self.get_and_store_latest_price(15, 5)
 
         combined_data = {**final_sell_data, **final_buy_data, **final_lowest_sell_data, **final_highest_buy_data, **prices}
-
-        print("Combined data", combined_data)
-        return combined_data
+        # Combine all lists into a single list
+        data_list = [final_sell_data, final_buy_data, final_lowest_sell_data, final_highest_buy_data, prices]
+        print("Combined data", data_list)
+        return data_list
 
     def collect_process_data_only_last_price(self):
         # Convert dictionaries to DataFrames
@@ -87,6 +88,36 @@ class dataCreation:
 
         # Return the result as a dictionary containing average price and total volume
         result = {"Overall Average {} Price".format(type): overall_average_price, "Overall Total {} Volume".format(type): total_total_volume}
+        print("result:", result)
+        return result
+
+    def process_trade_data_2(self, data, type):
+        # # Initialize variables to store overall average price and total volume
+        # total_average_price = 0
+        # total_total_volume = 0
+        #
+        # # Process the data and calculate overall average price and total volume
+        # for entry in data:
+        #     price = float(entry[0])
+        #     volume = float(entry[1])
+        #
+        #     total_average_price += price
+        #     total_total_volume += volume
+        #
+        # # Calculate the final overall average price
+        # overall_average_price = total_average_price / len(data)
+
+
+        # Return the result as a dictionary containing average price and total volume
+        result = {"{} trade requests".format(type): []}
+        transformed_data = []
+
+        for item in data:
+            # Assuming each item is a list with the structure ['price', 'volume', 'timestamp']
+            price, volume, timestamp = item
+            transformed_data.append({"price": float(price), "volume": float(volume), "timestamp": timestamp})
+
+        result["{} trade requests".format(type)] = transformed_data
         print("result:", result)
         return result
 

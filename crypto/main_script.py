@@ -87,9 +87,12 @@ if __name__ == "__main__":
 
     file_path =r'C:\Users\Filip\PycharmProjects\tensorEnv\crypto\data\combined_data_{}.json'.format( main_instance.trading_pair)
 
+    test_path =r'C:\Users\Filip\PycharmProjects\tensorEnv\crypto\data\test_json'
+
+
 
     # Create an instance of the CryptoPricePredictor class
-    crypto_predictor = CryptoPricePredictor(file_path, main_instance.world_instance)
+    crypto_predictor = CryptoPricePredictor(file_path, main_instance.world_instance, test_path)
 
     # Train LSTM models
     crypto_predictor.train_lstm_models()
